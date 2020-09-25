@@ -21,10 +21,8 @@
         <input type ="submit" name="submit" value="*">
         <input type ="submit" name="submit" value="/">
         </form>
-        
-        <br>
         <br>
         <p>Result: ${message}</p>
-        
+        <a href ="age">Age Calculator</a>
     </body>
 </html>

@@ -29,34 +29,39 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
         request.setAttribute("value1", value1);
         String value2 = request.getParameter("value2");
         request.setAttribute("value2", value2);
+        
+        if(value1 == null || value1.equals("") || value2 == null || value2.equals(""))
+        {
+            request.setAttribute("message", "invalid");
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
+            return;
+        }
+
         int x = Integer.parseInt(value1);
         int y = Integer.parseInt(value2);
+        int totalValue = 0;
         
         
         if(symbol.equals("+"))
         {
-            request.setAttribute("message", (x+y));
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-            return;
+            totalValue = x+y;
         }
         else if(symbol.equals("-"))
         {
-            request.setAttribute("message", (x-y));
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-            return;
+            totalValue = x-y;
         }
         else if(symbol.equals("*"))
         {
-            request.setAttribute("message", (x*y));
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
-            return;
+            totalValue = x*y;
         }
         else if(symbol.equals("/"))
         {
-            request.setAttribute("message", (x/y));
+            totalValue = x/y;
+        }
+        
+            request.setAttribute("message", totalValue);
             getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
             return;
-        }
     }
     
 }
